@@ -1,27 +1,47 @@
 const reveal = document.querySelector('.reveal');
-const displayVideos = document.querySelector('.display')
+const displayVideos = document.querySelector('.display');
+const image = document.querySelector('img');
 
 
-const revealVideos = async () => {
-  const videos = await fetchVideos();
+const revealVideoThumbnails = async () => {
+  const videoData = await fetchVideos();
 
-  videos.forEach((video) => {
-    const thumbnail = video.snippet.thumbnails.high.url;
+  videoData.forEach((videoThumbnail) => {
+    const thumbnail = videoThumbnail.snippet.thumbnails.high.url;
     const tag = document.createElement('img');
-    tag.src = thumbnail
+    tag.src = thumbnail;
     tag.height = '200';
     tag.width = '200';
 
     displayVideos.appendChild(tag)
 
   });
-
-
 }
 
 
 reveal.addEventListener('click', () => {
-  revealVideos();
-
+  revealVideoThumbnails();
 
 });
+
+
+const getVideoId = async () => {
+  const videos = await fetchVideos();
+
+  let eachVideoId;
+  videos.forEach((video) => {
+    eachVideoId = video.id.videoId;
+  
+
+    return eachVideoId;
+  });
+
+    // return eachVideoId;
+
+}
+
+// getVideoId();
+
+// image.addEventListener('click', () => {
+
+// })

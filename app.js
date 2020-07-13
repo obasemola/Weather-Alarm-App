@@ -13,6 +13,7 @@ const fetchVideos = async () => {
   });
 
   return response.data.items;
+  // console.log(response.data.items);
 
 };
 
