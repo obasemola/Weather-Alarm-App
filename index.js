@@ -1,21 +1,24 @@
 const reveal = document.querySelector('.reveal');
 const displayVideos = document.querySelector('.display');
-const image = document.querySelector('img');
 
 
 const revealVideoThumbnails = async () => {
-  const videoData = await fetchVideos();
+  const videos = await fetchVideos();
 
-  videoData.forEach((videoThumbnail) => {
-    const thumbnail = videoThumbnail.snippet.thumbnails.high.url;
+  videos.forEach((video) => {
+    const thumbnail = video.snippet.thumbnails.high.url;
     const tag = document.createElement('img');
+    const id = video.id.videoId;
+    tag.id = id;
     tag.src = thumbnail;
     tag.height = '200';
     tag.width = '200';
+    tag.addEventListener('click', playEachVideo);
 
-    displayVideos.appendChild(tag)
+    displayVideos.appendChild(tag);
 
   });
+
 }
 
 
@@ -25,23 +28,7 @@ reveal.addEventListener('click', () => {
 });
 
 
-const getVideoId = async () => {
-  const videos = await fetchVideos();
-
-  let eachVideoId;
-  videos.forEach((video) => {
-    eachVideoId = video.id.videoId;
-  
-
-    return eachVideoId;
-  });
-
-    // return eachVideoId;
-
+const playEachVideo = async (e) => {
+  videoId = e.target.id;
+  player.loadVideoById(videoId);
 }
-
-// getVideoId();
-
-// image.addEventListener('click', () => {
-
-// })

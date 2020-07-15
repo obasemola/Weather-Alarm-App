@@ -24,8 +24,8 @@
     let videoId = 'M7lc1UVf-VE';
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
-        height: '390',
-        width: '640',
+        height: screen.height/2,
+        width: screen.width/2,
         videoId: `${videoId}`,
         events: {
           'onReady': onPlayerReady,
@@ -52,15 +52,23 @@
     function stopVideo() {
       player.stopVideo();
     }
+
+  //   const playEachVideo = async (e) => {
+  //     videoId = e.target.id;
+  //     player.loadVideoById(videoId);
+  // }
   </script>
 
   <div class="container display">
-    <button class="reveal">Reveal</button>    
+  
   </div>
-  <div class="display"></div>
+
+  <button class="reveal">Reveal</button>   
+
 
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="app.js"></script>
   <script src="index.js"></script>
+  <div class="display"></div>
 </body>
 </html>
