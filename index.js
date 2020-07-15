@@ -24,6 +24,7 @@ const revealVideoThumbnails = async () => {
 
 reveal.addEventListener('click', () => {
   revealVideoThumbnails();
+  reveal.classList.add('noDisplay');
 
 });
 
